@@ -1,36 +1,27 @@
-const themeToggle = document.getElementById("theme-toggle");
-
-themeToggle.onclick = () => {
-  const html = document.documentElement;
-  const newTheme = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
-  html.setAttribute("data-theme", newTheme);
-  localStorage.setItem("theme", newTheme);
-};
-
-// Load saved theme
-window.onload = () => {
-  const savedTheme = localStorage.getItem("theme") || "light";
-  document.documentElement.setAttribute("data-theme", savedTheme);
-  loadGames();
-  setInterval(loadGames, 60000); // refresh every 60s
-};
-
 async function loadGames() {
   try {
-   const res = await fetch("games.json");
+    const res = await fetch("games.json");
     const games = await res.json();
-    const list = document.getElementById("games-list");
-    list.innerHTML = "";
+    const container = document.getElementById("games-list");
+    container.innerHTML = "";
 
-    games.forEach(game => {
-      const div = document.createElement("div");
-      div.innerHTML = `
-        <strong>${game.title}</strong> <br>
-        <a href="${game.link}" target="_blank">🎁 Claim Now</a>
-      `;
-      list.appendChild(div);
+    games.forEach((game) => {
+      const link = document.createElement("a");
+      link.href = game.link;
+      link.target = "_blank";
+      link.className = "game-card";
+      link.textContent = game.title;
+      container.appendChild(link);
     });
-  } catch (e) {
-    document.getElementById("games-list").innerText = "Failed to load games.";
+  } catch (err) {
+    console.error("Error loading games:", err);
   }
 }
+
+// Load and refresh every 60 seconds
+setInterval(loadGames, 60000);
+loadGames();
+
+document.getElementById("dark-toggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});
