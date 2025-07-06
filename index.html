@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>One Click Loots</title>
-  <meta name="description" content="Auto updates free games from Steam, Epic, GOG. One click to claim!">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OneClick Loots</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="nv1nz_logo_compressed.png" />
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1>🎮 One Click Loots</h1>
-    <button id="theme-toggle">🌙 Toggle Theme</button>
+    <img src="nv1nz_logo_compressed.png" alt="OneClick Loot Logo" class="logo" />
+    <h1>OneClick Loots</h1>
+    <button id="dark-toggle">🌙</button>
   </header>
 
   <main>
-    <div id="games-list">Loading games...</div>
+    <section id="games-list" class="games-grid">
+      <!-- Games will load here -->
+    </section>
   </main>
 
   <footer>
-    <p>Auto-refreshing every 60 seconds.</p>
+    <p>Made with ❤️ by nv1nz</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
