@@ -17,7 +17,7 @@ window.onload = () => {
 
 async function loadGames() {
   try {
-    const res = await fetch("https://raw.githubusercontent.com/nv1nz/one-click-loots/main/data/games.json");
+   const res = await fetch("games.json");
     const games = await res.json();
     const list = document.getElementById("games-list");
     list.innerHTML = "";
